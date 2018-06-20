@@ -1,0 +1,10 @@
+{% extends 'addr/f_base.html' %}
+
+{% block content %}
+    {% for list in lists %}
+        <div>
+            <h3>주소목록</h3>
+            <p><a href="{% url 'addr:friend_detail' pk=list.pk %}">{{ list.name }}</a></p>
+        </div>
+    {% endfor %}
+{% endblock %}
