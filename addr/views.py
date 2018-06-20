@@ -13,4 +13,8 @@ def friend_list(request):
 def friend_detail(request, pk):
     detail = get_object_or_404(Friend, pk=pk)
     list = Friend.objects.all()
-    return render(request, 'addr/friend_detail.html', {'detail': detail, 'list':list})
+    return render(request, 'addr/friend_detail.html', {'detail': detail, 'list': list})
+
+
+def home(request):
+    return render(request, 'addr/home.html', {})
