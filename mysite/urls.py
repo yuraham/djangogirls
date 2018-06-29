@@ -16,13 +16,15 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views
-# from addr import views
+from .views import home, url_error
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    url(r'^$', home, name='home'),
+    url(r'^blog/', include('blog.urls', namespace="blog")),
+    url(r'^polls/', include('polls.urls', namespace='polls')),
+    url(r'^addr/', include('addr.urls', namespace="addr")),
     url(r'^accounts/login/$', views.login, name='login'),
     url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
-    # url(r'^$', views.home, name='home'),
-    url(r'', include('blog.urls', namespace="blog")),
-    url(r'^addr/', include('addr.urls', namespace="addr")),
+    url(r'^admin/', admin.site.urls),
+    url(r'', url_error, name='url_error'),
 ]
